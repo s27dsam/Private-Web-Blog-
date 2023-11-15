@@ -1,0 +1,48 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif; /* Example font */
+}
+
+/* Header Styles */
+h1 {
+    text-align: center;
+    color: #333; /* Dark grey color for the text */
+    border-bottom: 2px solid #ccc; /* Grey bottom border */
+}
+
+/* Navigation Bar / Table of Contents */
+.toc-category {
+    display: inline-block;
+    margin-right: 10px;
+    color: #0066cc; /* Blue color for links */
+}
+
+.toc-category a {
+    text-decoration: none; /* Remove underline from links */
+}
+
+/* Horizontal Line */
+hr {
+    border: 0;
+    height: 1px;
+    background: #333; /* Dark grey line */
+}
+
+/* Post List */
+.post-list {
+    list-style-type: none; /* Remove bullet points */
+}
+
+.post-list li {
+    margin-bottom: 15px; /* Space between list items */
+}
+
+.post-meta {
+    font-size: 0.9em; /* Smaller text for meta info */
+    color: #999; /* Light grey color */
+}
+
+.post-link {
+    color: #333; /* Dark grey color for post links */
+    text-decoration: none; /* Remove underline from links */
+}
