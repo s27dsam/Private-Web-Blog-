@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Posts | Blog</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <a href="/logout" class="logout-button">Logout</a>
+
+    <header>
+        <h1>Blog</h1>
+        <a href="/create-post" class="create-post-link">Create a New Post</a>
+    </header>
+
+    <section>
+        <h2>All Posts</h2>
+        <ul>
+            <!-- Server-side templating for posts -->
+            {% for post in posts %}
+            <li class="post-item">
+                <div class="post-content">
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.content }}</p>
+                    <button type="button" onclick="toggleComment('{{ loop.index0 }}')">Comment</button>
+                    <div id="comment-form-{{ loop.index0 }}" class="comment-form" style="display: none;">
+                        <form action="/comment/{{ loop.index0 }}" method="post">
+                            <input type="text" name="comment_content" required>
+                            <button type="submit">Submit Comment</button>
+                        </form>
+                    </div>
+                    <!-- Display comments -->
+                    <div class="comments">
+                        {% for comment in post.comments %}
+                        <div class="comment">
+                            <p>{{ comment }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <script src="/static/main.js"></script>
+</body>
+</html>
+
