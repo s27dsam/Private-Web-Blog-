@@ -1,182 +1,116 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-*
-{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Quicksand', sans-serif;
-}
-body
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: #000;
-}
-section
-{
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2px;
-  flex-wrap: wrap;
-  overflow: hidden;
-}
-section::before
-{
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(#000,#1E3D59,#000);
-  animation: animate 5s linear infinite;
-}
-@keyframes animate
-{
-  0%
-  {
-    transform: translateY(-100%);
-  }
-  100%
-  {
-    transform: translateY(100%);
-  }
-}
-section span
-{
-  position: relative;
-  display: block;
-  width: calc(6.25vw - 2px);
-  height: calc(6.25vw - 2px);
-  background: #333366;
-  z-index: 2;
-  transition: 1.5s;
-}
-section span:hover
-{
-  background: #1E3D59;
-  transition: 0s;
+/* General Styles for Dark Mode */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1b;
+    color: #d7dadc;
+    line-height: 1.6;
 }
 
-section .signin
-{
-  position: absolute;
-  width: 400px;
-  background: #222;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-  border-radius: 4px;
-  box-shadow: 0 15px 35px rgba(0,0,0,9);
+a {
+    color: #569cd6;
+    text-decoration: none;
 }
-section .signin .content
-{
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 40px;
+
+a:hover {
+    text-decoration: underline;
 }
-section .signin .content h2
-{
-  font-size: 2em;
-  color: #333366;
-  text-transform: uppercase;
+
+/* Style for the logout button in the top right corner */
+.logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #ff4500;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
 }
-section .signin .content .form
-{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+
+.logout-button:hover {
+    background-color: #e43f00;
 }
-section .signin .content .form .inputBox
-{
-  position: relative;
-  width: 100%;
+
+/* Style for comments */
+.comments {
+    margin-top: 30px;
 }
-section .signin .content .form .inputBox input
-{
-  position: relative;
-  width: 100%;
-  background: #333;
-  border: none;
-  outline: none;
-  padding: 25px 10px 7.5px;
-  border-radius: 4px;
-  color: #fff;
-  font-weight: 500;
-  font-size: 1em;
+
+.comment {
+    background-color: #272729;
+    border: 1px solid #343536;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
 }
-section .signin .content .form .inputBox i
-{
-  position: absolute;
-  left: 0;
-  padding: 15px 10px;
-  font-style: normal;
-  color: #aaa;
-  transition: 0.5s;
-  pointer-events: none;
+
+/* Style for the create post form */
+.create-post-form {
+    background-color: #272729;
+    padding: 20px;
+    margin-top: 30px;
+    border: 1px solid #343536;
+    border-radius: 4px;
 }
-.signin .content .form .inputBox input:focus ~ i,
-.signin .content .form .inputBox input:valid ~ i
-{
-  transform: translateY(-7.5px);
-  font-size: 0.8em;
-  color: #fff;
+
+/* Additional styles for the post layout */
+ul {
+    list-style: none;
+    padding: 0;
 }
-.signin .content .form .links
-{
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+
+.post-item {
+    background-color: #272729;
+    color: #d7dadc;
+    border: 1px solid #343536;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 4px;
 }
-.signin .content .form .links a
-{
-  color: #fff;
-  text-decoration: none;
+
+.post-content {
+    margin-bottom: 15px;
 }
-.signin .content .form .links a:nth-child(2)
-{
-  color: #333366;
-  font-weight: 600;
+
+.comment-form {
+    margin-top: 20px;
 }
-.signin .content .form .inputBox input[type="submit"]
-{
-  padding: 10px;
-  background: #333366;
-  color: #000;
-  font-weight: 600;
-  font-size: 1.35em;
-  letter-spacing: 0.05em;
-  cursor: pointer;
+
+/* Form Input and Button Styles */
+input[type='text'],
+input[type='submit'],
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #343536;
+    background: #1a1a1b;
+    color: #d7dadc;
 }
-input[type="submit"]:active
-{
-  opacity: 0.6;
+
+input[type='submit'],
+button {
+    background: #569cd6;
+    color: white;
+    cursor: pointer;
 }
-@media (max-width: 900px)
-{
-  section span
-  {
-    width: calc(10vw - 2px);
-    height: calc(10vw - 2px);
-  }
+
+input[type='submit']:hover,
+button:hover {
+    background: #41729f;
 }
-@media (max-width: 600px)
-{
-  section span
-  {
-    width: calc(20vw - 2px);
-    height: calc(20vw - 2px);
-  }
+
+/* Adjustments for smaller screens */
+@media only screen and (max-width: 600px) {
+    .logout-button {
+        width: 100%;
+        position: relative;
+        margin-bottom: 20px;
+    }
 }
+

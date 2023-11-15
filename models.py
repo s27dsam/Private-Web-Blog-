@@ -1,10 +1,27 @@
-from sqlalchemy import Column, Integer, String, Text
-from database import Base
+# from database import Base 
+# from sqlalchemy import Integer, String, Column, ForeignKey
+# from sqlalchemy.orm import relationship
 
+# class User(Base):
+#     __tablename__ = "user"
 
+#     id = Column(Integer, primary_key=True)
 
-class BlogPost(Base):
-    __tablename__ = "blog_posts"
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
-    content = Column(Text)
+#     username = Column(String)
+#     password = Column(String)
+#     email = Column(String)
+
+#     blogs = relationship("Blog", back_populates="owner")
+
+# class Blog(Base):
+#     __tablename__ = "blog"
+
+#     id = Column(Integer, primary_key=True)
+
+#     name = Column(String)
+#     body = Column(String)
+#     url = Column(String)
+
+#     owner_id = Column(Integer, ForeignKey("user.id"))
+    
+#     owner = relationship("User", back_populates="blogs")
