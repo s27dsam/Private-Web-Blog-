@@ -1,42 +1,14 @@
-# from pydantic import BaseModel 
+# from fastapi_sqlalchemy import sqlalchemy_to_pydantic
+# from sqlalchemy import or_
+# from . import models
 
-# class BaseUser(BaseModel):
-#     username : str 
-#     email : str
+# # Automatically generate Pydantic models for the BlogPost and Comment models
+# BlogPost_Pydantic = sqlalchemy_to_pydantic(models.BlogPost)
+# Comment_Pydantic = sqlalchemy_to_pydantic(models.Comment)
 
-# class User(BaseModel):
-#     id : int
-#     username : str 
-#     email : str
-
-# class CreateUser(BaseUser):
-#     password : str
-
-# class Blog(BaseModel):
-#     name : str
-#     body : str
-#     url : str
-
-# class UpdateBlog(BaseModel):
-#     name : str
-#     body : str
-
-# class ShowUser(BaseUser):
-#     blogs : list[Blog]=[]
-
+# # Customize the BlogPostIn schema to exclude the comments field
+# class BlogPostIn(BlogPost_Pydantic):
 #     class Config:
 #         orm_mode = True
 
-# class ShowBlog(Blog):
-#     id : int
-#     owner : User
-
-#     class Config:
-#         orm_mode = True
-
-# class Login(BaseModel):
-#     username : str
-#     password : str
-
-# class TokenData(BaseModel):
-#     username : str
+#     comments = []
