@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Posts | Blog</title>
+    <title>The Private Blog</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <a href="/logout" class="logout-button">Logout</a>
 
     <header>
-        <h1>Blog</h1>
+        <h1>The Private Blog</h1>
+        <br>
         <a href="/create-post" class="create-post-link">Create New Post</a>
     </header>
 
     <section>
-        <h2>All Posts</h2>
+        <h2>All Posts for the Week</h2>
         <ul>
             <!-- Server-side templating for posts -->
             {% for post in posts %}
@@ -44,7 +45,6 @@
         
         </ul>
     </section>
-
     <script src="/static/main.js"></script>
 </body>
 </html>

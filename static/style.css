@@ -1,14 +1,16 @@
 /* General Styles for Dark Mode */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     background-color: #1a1a1b;
     color: #d7dadc;
     line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 a {
     color: #569cd6;
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 a:hover {
@@ -27,6 +29,7 @@ a:hover {
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 .logout-button:hover {
@@ -45,6 +48,7 @@ a:hover {
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 4px;
+    transition: background-color 0.3s;
 }
 
 /* Style for the create post form */
@@ -54,6 +58,7 @@ a:hover {
     margin-top: 30px;
     border: 1px solid #343536;
     border-radius: 4px;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 /* Additional styles for the post layout */
@@ -69,6 +74,7 @@ ul {
     margin-bottom: 15px;
     padding: 20px;
     border-radius: 4px;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .post-content {
@@ -91,6 +97,7 @@ button {
     border: 1px solid #343536;
     background: #1a1a1b;
     color: #d7dadc;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
 input[type='submit'],
@@ -104,6 +111,7 @@ input[type='submit']:hover,
 button:hover {
     background: #41729f;
 }
+
 
 /* Adjustments for smaller screens */
 @media only screen and (max-width: 600px) {

@@ -3,13 +3,13 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.responses import RedirectResponse
-from sqlalchemy.orm import Session, joinedload
+from sqlalchemy.orm import Session
 from database import getdb, engine  # Import the updated function
 import models
 from database import SessionLocal
-models.Base.metadata.create_all(bind=engine)
 import uvicorn
 
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
@@ -76,12 +76,6 @@ async def add_comment(request: Request, post_id: int, comment_content: str = For
 
     # Redirect back to the post list page
     return RedirectResponse(url="/posts", status_code=303)
-# @app.get("/posts", response_class=HTMLResponse)
-# async def posts_list(request: Request, db: Session = Depends(getdb)):
-#     # Display the list of posts from the database along with associated comments
-#     posts = db.query(models.BlogPost).options(joinedload(models.BlogPost.comments)).all()
-
-#     return templates.TemplateResponse("posts.html", {"request": request, "posts": posts})
 
 
 # log out
