@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, Request, Form
+from fastapi import FastAPI, Depends, Request, Form, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -8,6 +8,7 @@ from database import getdb, engine  # Import the updated function
 import models
 from database import SessionLocal
 import uvicorn
+
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -31,21 +32,22 @@ templates = Jinja2Templates(directory="templates")
 async def login_form(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
+
+def check_credentials(username, password):
+    with open('users.txt', 'r') as f:
+        for line in f:
+            stored_username, stored_password = line.strip().split(':')
+            if username == stored_username and password == stored_password:
+                return True
+    return False
+
 @app.post("/login")
 async def login(request: Request, username: str = Form(...), password: str = Form(...)):
-    # Add login validation logic here
-    # Redirect to the post list page upon successful login
-    return RedirectResponse(url="/posts", status_code=303)
+    if check_credentials(username, password):
+        return RedirectResponse(url="/posts", status_code=303)
+    else:
+        return RedirectResponse(url="/", status_code=303)
 
-@app.get("/signup", response_class=HTMLResponse)
-async def signup_form(request: Request):
-    return templates.TemplateResponse("signup.html", {"request": request})
-
-@app.post("/signup")
-async def signup(request: Request, username: str = Form(...), password: str = Form(...), db: Session = Depends(getdb)):
-    # Add user registration logic here
-    # Redirect to the login page upon successful signup
-    return RedirectResponse(url="/", status_code=303)
 
 @app.get("/posts", response_class=HTMLResponse)
 async def posts_list(request: Request, db: Session = Depends(getdb)):
@@ -86,7 +88,6 @@ async def add_comment(request: Request, post_id: int, comment_content: str = For
 
     # Redirect back to the post list page
     return RedirectResponse(url="/posts", status_code=303)
-
 
 # log out
 @app.get("/logout")
