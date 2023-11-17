@@ -37,6 +37,16 @@ async def login(request: Request, username: str = Form(...), password: str = For
     # Redirect to the post list page upon successful login
     return RedirectResponse(url="/posts", status_code=303)
 
+@app.get("/signup", response_class=HTMLResponse)
+async def signup_form(request: Request):
+    return templates.TemplateResponse("signup.html", {"request": request})
+
+@app.post("/signup")
+async def signup(request: Request, username: str = Form(...), password: str = Form(...), db: Session = Depends(getdb)):
+    # Add user registration logic here
+    # Redirect to the login page upon successful signup
+    return RedirectResponse(url="/", status_code=303)
+
 @app.get("/posts", response_class=HTMLResponse)
 async def posts_list(request: Request, db: Session = Depends(getdb)):
     # Display the list of posts from the database
