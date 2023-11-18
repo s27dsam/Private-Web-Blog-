@@ -33,8 +33,6 @@ templates = Jinja2Templates(directory="templates")
 async def login_form(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
-
-
 def check_credentials(username, password):
     with open('users.txt', 'r') as f:
         for line in f:
