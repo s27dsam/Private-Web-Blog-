@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from fastapi import FastAPI, Depends, Request, Form, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -31,6 +32,7 @@ templates = Jinja2Templates(directory="templates")
 @app.get("/", response_class=HTMLResponse)
 async def login_form(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
+
 
 
 def check_credentials(username, password):
@@ -88,6 +90,14 @@ async def add_comment(request: Request, post_id: int, comment_content: str = For
 
     # Redirect back to the post list page
     return RedirectResponse(url="/posts", status_code=303)
+
+@app.delete("/delete-old-posts")
+async def delete_old_posts(db: Session = Depends(getdb)):
+    seven_days_ago = datetime.now() - timedelta(days=7)
+    db.query(models.BlogPost).filter(models.BlogPost.id <= seven_days_ago).delete()
+    db.query(models.Comment).filter(models.Comment.blog_post_id <= seven_days_ago).delete()
+    db.commit()
+    return {"message": "Old posts deleted successfully"}
 
 # log out
 @app.get("/logout")
