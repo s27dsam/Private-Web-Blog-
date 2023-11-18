@@ -11,7 +11,7 @@ function toggleCommentForm(index) {
 
 function openEmailClient() {
         var subject = "New Signup Request";
-        var body = "Hello, I'm interested in signing up. Please send me more information.";
+        var body = "Make your case below as to why you should be allowed to join the form.";
         var mailtoLink = "mailto:s2711dsam@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
 
 

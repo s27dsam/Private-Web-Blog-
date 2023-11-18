@@ -46,7 +46,7 @@ async def login(request: Request, username: str = Form(...), password: str = For
     if check_credentials(username, password):
         return RedirectResponse(url="/posts", status_code=303)
     else:
-        return RedirectResponse(url="/", status_code=303)
+        return templates.TemplateResponse("loginf.html", {"request": request})
 
 
 @app.get("/posts", response_class=HTMLResponse)
