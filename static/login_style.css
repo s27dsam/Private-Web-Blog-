@@ -181,7 +181,9 @@ input[type="submit"]:active
   }
 }
 
-.loginf i {
+section .signin .content .loginf i {
+    color: #EC0B0B !important;
+}
+.loginf {
     color: #EC0B0B;
-    font-family: 'Quicksand', sans-serif;
 }

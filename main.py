@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.responses import RedirectResponse
 from sqlalchemy.orm import Session
-from database import getdb, engine  # Import the updated function
+from database import getdb, engine
 import models
 from database import SessionLocal
 import uvicorn
